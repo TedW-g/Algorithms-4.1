@@ -14,11 +14,19 @@ public class Algorithms
         int twoDigit = twoDigit();
         int fiveOhOne = fiveOhOne();
         int big = big();
+        int small = small();
+        int sum = sum();
+        double mean = mean();
+        int mode = mode();
         System.out.println(odds);
         System.out.println(evens);
         System.out.println(twoDigit);
         System.out.println(fiveOhOne);
         System.out.println(big);
+        System.out.println(small);
+        System.out.println(sum);
+        System.out.println(mean);
+        System.out.println(mode);
         s.close();
     }
 
@@ -72,10 +80,49 @@ public class Algorithms
         int big = 0;
         while (s.hasNext())
         {
-            if (s.nextInt() > big)
-            big = s.nextInt();
+            if (s.nextInt() > big) big = s.nextInt();
         }
         return big;
+    }
+
+    public static int small() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        int small = 0;
+        while (s.hasNext())
+        {
+            if (s.nextInt() < small) small = s.nextInt();
+        }
+        return small;
+    }
+    
+    public static int sum() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        int sum = 0;
+        while (s.hasNext())
+        {
+            sum += s.nextInt();
+        }
+        return sum;
+    }
+
+    public static double mean() throws FileNotFoundException
+    {
+        s = new Scanner(f);
+        double a = 0.0;
+        int mean = 0;
+        while (s.hasNext())
+        {
+            a++;
+            mean  += s.nextInt();
+        }
+        return (mean / a);
+    }
+
+    public static int mode() throws FileNotFoundException
+    {
+        
     }
 
 }
