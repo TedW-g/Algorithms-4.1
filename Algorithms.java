@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,23 +10,23 @@ public class Algorithms
     public static void main(String[] args) throws FileNotFoundException 
     {
         f = new File("Numbers.txt");
-        int odds = odds();
-        int evens = evens();
-        int twoDigit = twoDigit();
-        int fiveOhOne = fiveOhOne();
-        int big = big();
-        int small = small();
-        int sum = sum();
-        double mean = mean();
+      //  int odds = odds();
+      //  int evens = evens();
+       // int twoDigit = twoDigit();
+      //  int fiveOhOne = fiveOhOne();
+      //  int big = big();
+      //  int small = small();
+      //  int sum = sum();
+      //  double mean = mean();
         int mode = mode();
-        System.out.println(odds);
-        System.out.println(evens);
-        System.out.println(twoDigit);
-        System.out.println(fiveOhOne);
-        System.out.println(big);
-        System.out.println(small);
-        System.out.println(sum);
-        System.out.println(mean);
+      //  System.out.println(odds);
+      //  System.out.println(evens);
+      //  System.out.println(twoDigit);
+       // System.out.println(fiveOhOne);
+       // System.out.println(big);
+      //  System.out.println(small);
+      //  System.out.println(sum);
+      //  System.out.println(mean);
         System.out.println(mode);
         s.close();
     }
@@ -122,7 +123,28 @@ public class Algorithms
 
     public static int mode() throws FileNotFoundException
     {
-        
-    }
+    Scanner s = new Scanner(f);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        while (s.hasNextInt()) 
+        {
+            numbers.add(s.nextInt());
+        }
+        s.close();
+        int mode = numbers.get(0);
+        int maxCount = 0;
 
+        for (int i = 0; i < numbers.size(); i++) {
+            int count = 0;
+            for (int j = 0; j < numbers.size(); j++) {
+                if (numbers.get(i).equals(numbers.get(j))) {
+                    count++;
+                }
+            }
+            if (count > maxCount) {
+                maxCount = count;
+                mode = numbers.get(i);
+            }
+        }
+        return mode;
+    }
 }
